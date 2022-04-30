@@ -1,6 +1,7 @@
 package com.gildedrose;
 
-/** Änderungsvorschläge
+/**
+ * Änderungsvorschläge
  * - Overall/Main Goal notieren: gut genug muss es sein für den Mob
  * Limit of mob
  * Keine Pause machen
@@ -62,21 +63,28 @@ class GildedRose {
 
             item.sellIn--;
 
-            if (item.sellIn < 0) {
-                if (!item.name.equals(BRIE)) {
-                    if (!item.name.equals(BACKSTAGE_PASSES)) {
-                        if (item.quality > 0) {
-                            item.quality--;
-                        }
-                    } else {
-                        item.quality = 0;
-                    }
-                } else {
+            if (item.name.equals(BRIE)) {
+                if (item.sellIn < 0) {
                     if (item.quality < 50) {
                         item.quality++;
                     }
                 }
             }
+            
+            if (!item.name.equals(BRIE)) {
+                if (item.name.equals(BACKSTAGE_PASSES)) {
+                    if (item.sellIn < 0) {
+                        item.quality = 0;
+                    }
+                } else {
+                    if (item.sellIn < 0) {
+                        if (item.quality > 0) {
+                            item.quality--;
+                        }
+                    }
+                }
+            }
+
         }
     }
 }
