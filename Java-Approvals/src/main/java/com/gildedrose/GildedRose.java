@@ -1,7 +1,17 @@
 package com.gildedrose;
 
+/** Änderungsvorschläge
+ * - Overall/Main Goal notieren
+ * Limit of mob
+ * Keine Pause machen
+ * Pause machen
+ */
+
 /**
- * - "String include in List"
+ * - "Constant include in List"
+ * - Switch statement nach property
+ * - Sulfuras ändert sich nicht?
+ * -
  */
 
 class GildedRose {
@@ -16,9 +26,13 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
+            if (item.name.equals(SULFURAS)) {
+                continue;
+            }
+
             if (!item.name.equals(BRIE)
                 && !item.name.equals(BACKSTAGE_PASSES)) {
-                if (item.quality > 0 && !item.name.equals(SULFURAS)) {
+                if (item.quality > 0) {
                     item.quality--;
                 }
             } else {
@@ -37,14 +51,13 @@ class GildedRose {
                 }
             }
 
-            if (!item.name.equals(SULFURAS)) {
-                item.sellIn--;
-            }
+
+            item.sellIn--;
 
             if (item.sellIn < 0) {
                 if (!item.name.equals(BRIE)) {
                     if (!item.name.equals(BACKSTAGE_PASSES)) {
-                        if (item.quality > 0 && !item.name.equals(SULFURAS)) {
+                        if (item.quality > 0) {
                             item.quality--;
                         }
                     } else {
