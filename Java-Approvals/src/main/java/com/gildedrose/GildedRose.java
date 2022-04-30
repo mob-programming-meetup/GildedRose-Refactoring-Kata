@@ -1,7 +1,7 @@
 package com.gildedrose;
 
 /** Änderungsvorschläge
- * - Overall/Main Goal notieren
+ * - Overall/Main Goal notieren: gut genug muss es sein für den Mob
  * Limit of mob
  * Keine Pause machen
  * Pause machen
@@ -18,6 +18,8 @@ class GildedRose {
     public static final String BRIE = "Aged Brie";
     public static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
     public static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
+
+    public static final String MONGOOSE = "Elixir of the Mongoose";
     Item[] items;
 
     public GildedRose(Item[] items) {
@@ -26,16 +28,18 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
+
             if (item.name.equals(SULFURAS)) {
                 continue;
             }
 
-            if (!item.name.equals(BRIE)
-                && !item.name.equals(BACKSTAGE_PASSES)) {
+            if (!item.name.equals(BRIE) && !item.name.equals(BACKSTAGE_PASSES)) {
                 if (item.quality > 0) {
                     item.quality--;
                 }
-            } else {
+            }
+
+            if (item.name.equals(BRIE) || item.name.equals(BACKSTAGE_PASSES)) {
                 if (item.quality < 50) {
                     item.quality++;
 
